@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Puzzle Add 3.ogg-5619f28cbdcb497f88b759f0a71a8d56.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/puzzle/Puzzle Add 3.ogg"
+dest_files=[ "res://.import/Puzzle Add 3.ogg-5619f28cbdcb497f88b759f0a71a8d56.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sacred Place Add 4.ogg-4a742acc912603d252a2e795f27688cf.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/shrine/Sacred Place Add 4.ogg"
+dest_files=[ "res://.import/Sacred Place Add 4.ogg-4a742acc912603d252a2e795f27688cf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

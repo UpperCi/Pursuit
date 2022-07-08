@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/characters/player.png" type="Texture" id=1]
+[ext_resource path="res://scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/unscii.tres" type="DynamicFont" id=5]
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 2 )
+start_pos = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="state" type="Label" parent="UI"]
+margin_left = 184.0
+margin_top = 128.0
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 5 )
+text = "amongus"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Label" parent="UI"]
+margin_left = 184.0
+margin_top = 112.0
+margin_right = 256.0
+margin_bottom = 128.0
+custom_fonts/font = ExtResource( 5 )
+text = "amongus"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="TextureRect" parent="UI"]
+margin_left = 176.0
+margin_top = 112.0
+margin_right = 192.0
+margin_bottom = 128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell" type="TextureRect" parent="UI"]
+margin_left = 176.0
+margin_top = 128.0
+margin_right = 192.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

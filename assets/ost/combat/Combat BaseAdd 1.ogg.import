@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Combat BaseAdd 1.ogg-41adbb034553f6eeaa644e17e8cfe00a.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/combat/Combat BaseAdd 1.ogg"
+dest_files=[ "res://.import/Combat BaseAdd 1.ogg-41adbb034553f6eeaa644e17e8cfe00a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

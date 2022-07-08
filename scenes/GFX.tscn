@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/white.png" type="Texture" id=1]
+[ext_resource path="res://assets/shaders/crt.shader" type="Shader" id=2]
+[ext_resource path="res://scripts/GFX.gd" type="Script" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/res = Vector2( 256, 144 )
+shader_param/stretch_screen = true
+shader_param/do_scanline = true
+shader_param/do_noise = true
+shader_param/do_subpixel = true
+shader_param/slot_mask = false
+shader_param/blur_slots = true
+shader_param/rotate_pixels = false
+shader_param/stretch = 0.3
+shader_param/zoom = 0.975
+shader_param/scan_min = 0.3
+shader_param/scan_max = 0.8
+shader_param/rgb_min = 0.3
+shader_param/rgb_mult = 1.1
+shader_param/rgb_treshold = 0.2
+shader_param/backlight = 0.4
+shader_param/noise_mult = 0.1
+shader_param/PI = 3.14159
+
+[node name="GFX" type="Control"]
+margin_right = 256.0
+margin_bottom = 144.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="PostProcess" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PostProcess"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+margin_right = 256.0
+margin_bottom = 144.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

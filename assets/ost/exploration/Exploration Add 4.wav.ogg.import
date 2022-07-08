@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Exploration Add 4.wav.ogg-e4199f0745adfeb936690b9d21ffc8ed.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/exploration/Exploration Add 4.wav.ogg"
+dest_files=[ "res://.import/Exploration Add 4.wav.ogg-e4199f0745adfeb936690b9d21ffc8ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
