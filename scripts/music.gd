@@ -1,6 +1,6 @@
 extends Node
 
-const FADE_TIME = 0.25
+const FADE_TIME = 0.4
 
 onready var songs = get_children()
 onready var tween = $Tween
@@ -39,7 +39,8 @@ func _process(delta):
 			tweening = true
 			tween.start()
 	if tweening:
-		AudioServer.set_bus_volume_db(music_bus, linear2db(vol))
+		var true_vol = linear2db(vol)
+		AudioServer.set_bus_volume_db(music_bus, true_vol * 0.9 + 0.1 - 5)
 
 func _ready():
 	songs.erase(tween)
