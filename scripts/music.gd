@@ -3,13 +3,13 @@ extends Node
 const FADE_TIME = 0.4
 
 onready var songs = get_children()
-onready var tween = $Tween
+onready var anim = $AnimationPlayer
 onready var music_bus = AudioServer.get_bus_index("Music")
 
-var vol = 1.0
+export var vol = 1.0
 var time_left = 100
-var tweening = false
 var new_song = false
+var animating = 0
 
 func queue_song(song):
 	for s in songs:
@@ -33,26 +33,17 @@ func _process(delta):
 	
 	# fade out
 	if time_left < FADE_TIME:
-		if new_song and not tweening:
-			tween.interpolate_property(self, "vol", 1.0, 0.0, FADE_TIME,
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tweening = true
-			tween.start()
-	if tweening:
+		if new_song and not animating:
+			anim.play("fade_song")
+			animating = true
+	if animating:
 		var true_vol = linear2db(vol)
 		AudioServer.set_bus_volume_db(music_bus, true_vol * 0.9 + 0.1 - 5)
 
 func _ready():
-	songs.erase(tween)
+	songs.erase(anim)
 	pass
 
-func _on_Tween_tween_completed(object, key):
-	tweening = false
-	if new_song:
-		new_song = false
-		tween.interpolate_property(self, "vol", 0.0, 1.0, FADE_TIME,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tweening = true
-		tween.start()
-	else:
-		AudioServer.set_bus_volume_db(music_bus, 0)
+func _on_AnimationPlayer_animation_finished(anim_name):
+	animating = false
+	AudioServer.set_bus_volume_db(music_bus, 0)

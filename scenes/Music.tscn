@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/music.gd" type="Script" id=1]
 [ext_resource path="res://scripts/song.gd" type="Script" id=2]
 [ext_resource path="res://scripts/track.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:vol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_song"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:vol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0 ]
+}
 
 [node name="Music" type="Node"]
 script = ExtResource( 1 )
@@ -79,6 +110,8 @@ script = ExtResource( 3 )
 chance = 0.0
 files = [ "res://assets/ost/shrine/Sacred Place BaseAdd 1.ogg", "res://assets/ost/shrine/Sacred Place BaseAdd 2.ogg", "res://assets/ost/shrine/Sacred Place BaseAdd 3.ogg", "res://assets/ost/shrine/Sacred Place BaseAdd 4.ogg" ]
 
-[node name="Tween" type="Tween" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/fade_song = SubResource( 1 )
 
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
