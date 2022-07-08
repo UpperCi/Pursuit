@@ -2,6 +2,7 @@ extends Node
 
 export var duration = 8.175
 export var chance = 1.0
+export var sync_id = 2
 export (Array, String, FILE) var files = []
 
 var timer = 0
@@ -23,6 +24,7 @@ func shuffle():
 	var stream = streams[randi() % len(streams)]
 	player.stream = stream
 	player.play(0.0)
+	print(name)
 
 func stop():
 	player.stop()

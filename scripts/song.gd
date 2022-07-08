@@ -10,6 +10,9 @@ func new_sound(track):
 	track.timer = track.duration + AudioServer.get_time_to_next_mix()
 	if randf() < track.chance:
 		track.shuffle()
+		for t in tracks:
+			if t != track and track.sync_id == t.sync_id:
+				t.shuffle()
 	else:
 		track.stop()
 
