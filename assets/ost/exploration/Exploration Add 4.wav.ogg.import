@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Exploration Add 4.wav.ogg-e4199f0745adfeb936690b9d21
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

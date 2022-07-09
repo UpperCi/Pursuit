@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Exploration Add 1.ogg-178a4b23f098a310a37edffe465e48
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

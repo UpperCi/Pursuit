@@ -38,7 +38,7 @@ func _process(delta):
 			animating = true
 	if animating:
 		var true_vol = linear2db(vol)
-		AudioServer.set_bus_volume_db(music_bus, true_vol * 0.9 + 0.1 - 5)
+		AudioServer.set_bus_volume_db(music_bus, true_vol - 5)
 
 func _ready():
 	songs.erase(anim)

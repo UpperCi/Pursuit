@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Combat Add 3.ogg-5706a9e3f403a025094b2e1e69dea7a3.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

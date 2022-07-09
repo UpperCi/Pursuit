@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Puzzle Add 3.ogg-5619f28cbdcb497f88b759f0a71a8d56.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

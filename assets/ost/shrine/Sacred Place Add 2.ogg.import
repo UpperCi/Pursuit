@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Sacred Place Add 2.ogg-1e13f401640a8f716053034ecfcda
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

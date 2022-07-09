@@ -1,31 +1,32 @@
 extends Node
 
-export var duration = 8.175
+export var duration = 8.75
 export var chance = 1.0
 export var sync_id = 2
 export (Array, String, FILE) var files = []
 
 var timer = 0
-var player: AudioStreamPlayer
-var streams: Array = []
+var players = []
 
 func _ready():
-	player = AudioStreamPlayer.new()
-	player.bus = "Music"
-	add_child(player)
-	
 	for f in files:
-		streams.push_back(load(f))
+		var player = AudioStreamPlayer.new()
+		player.bus = "Music"
+		player.stream = load(f)
+		player.autoplay = false
+		add_child(player)
+		player.connect("finished", self, "_on_audio_finished")
+		players.push_back(player)
+		player.play(8.7)
 
 func shuffle():
-	if len(streams) <= 0:
-		stop()
-		return
-	var stream = streams[randi() % len(streams)]
-	player.stream = stream
-	player.play(0.0)
-	print(name)
+	var player: AudioStreamPlayer = players[randi() % len(players)]
+	player.play()
 
 func stop():
-	player.stop()
-	player.stream = null
+	for player in players:
+		player.stop()
+
+func _on_audio_finished():
+	print(name)
+	stop()

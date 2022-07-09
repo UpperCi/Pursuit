@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Combat BaseAdd 4.ogg-5ba0b96f25efce1e574aadaab0850a2
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
