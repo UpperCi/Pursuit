@@ -11,5 +11,6 @@ func use(start_pos: Vector2, dir: Vector2):
 			return false
 		if cell.entity:
 			cell.entity.hp -= 1
+			SFX.play_random("spell_cast_fire", 6)
 			return true
 	return false

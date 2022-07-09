@@ -15,7 +15,6 @@ func _ready():
 		player.stream = load(f)
 		player.autoplay = false
 		add_child(player)
-		player.connect("finished", self, "_on_audio_finished")
 		players.push_back(player)
 		player.play(8.7)
 
@@ -26,7 +25,3 @@ func shuffle():
 func stop():
 	for player in players:
 		player.stop()
-
-func _on_audio_finished():
-	print(name)
-	stop()

@@ -16,15 +16,17 @@ onready var ui = $UI
 onready var anim = $AnimationPlayer
 
 func set_action(v):
+	if v != current_action:
+		anim.play("RESET")
+		match v:
+			ACTIONS.MOVE:
+				anim.play("Move")
+			ACTIONS.ATTACK:
+				anim.play("Attack", -1, 1.5)
+			ACTIONS.SPELL:
+				anim.play("Spell", -1, 0.8)
+				SFX.play_random("spell_prepare", 4)
 	current_action = v
-	anim.play("RESET")
-	match v:
-		ACTIONS.MOVE:
-			anim.play("Move")
-		ACTIONS.ATTACK:
-			anim.play("Attack", -1, 1.5)
-		ACTIONS.SPELL:
-			anim.play("Spell", -1, 0.8)
 
 func _ready():
 	self.map_pos = start_pos

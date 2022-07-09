@@ -48,7 +48,8 @@ func get_cell(pos: Vector2):
 		"tile": tile,
 		"entity": entity,
 		"item": item,
-		"valid_move": (tile == -1 && not entity)
+		"valid_move": (tile == -1 && not entity),
+		"valid_path": (tile == -1)
 	}
 
 func _ready():
@@ -138,7 +139,7 @@ func find_path(start: Vector2, end: Vector2):
 				return path
 			if pos_in(pos, path_nodes):
 				continue
-			if not get_cell(pos).valid_move:
+			if not get_cell(pos).valid_path:
 				continue
 			path_nodes.push_back(create_path_node(pos, shortest_i, path_nodes))
 		
