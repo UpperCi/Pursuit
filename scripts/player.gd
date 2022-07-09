@@ -61,10 +61,13 @@ func update_items():
 func eval_action(dir: Vector2):
 	match(current_action):
 		ACTIONS.MOVE:
-			return move_self(map_pos + dir)
+			if move_self(map_pos + dir):
+				SFX.play_random("footstep_single", 6)
+				return true
 		ACTIONS.ATTACK:
 			self.current_action = ACTIONS.MOVE
 			if weapon.use(map_pos, dir):
+				SFX.play_random("knife", 4)
 				return true
 		ACTIONS.SPELL:
 			self.current_action = ACTIONS.MOVE

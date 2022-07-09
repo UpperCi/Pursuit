@@ -1,6 +1,6 @@
 extends Node
 
-export var duration = 8.75
+export var duration = 8.74
 export var chance = 1.0
 export var sync_id = 2
 export (Array, String, FILE) var files = []

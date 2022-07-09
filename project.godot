@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 Universe="*res://scenes/Universe.tscn"
 Gfx="*res://scenes/GFX.tscn"
 Music="*res://scenes/Music.tscn"
+SFX="*res://scenes/SFX.tscn"
 
 [display]
 
