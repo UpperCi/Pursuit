@@ -9,6 +9,8 @@ enum ROOM_TYPES {
 
 export (ROOM_TYPES) var type
 
+const DIRS = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]
+
 var entities = []
 var items = []
 var player = null
@@ -65,6 +67,38 @@ func _ready():
 			Music.queue_song("Puzzle")
 		ROOM_TYPES.SHRINE:
 			Music.queue_song("Shrine")
+
+func line_of_sight(start: Vector2, end: Vector2):
+	for point in line(start, end):
+		var cell = get_cell(point)
+		if not cell.valid_path:
+			return false
+	return true
+
+# Amit Patel’s algorithm ( https://www.redblobgames.com )
+# Implementation: https://godotengine.org/qa/35276/tile-based-line-drawing-algorithm-efficiency
+func line(start: Vector2, end: Vector2):
+	var dx = end.x - start.x
+	var dy = end.y - start.y
+	var nx = abs( dx )
+	var ny = abs( dy )
+	var signX = sign( dx )
+	var signY = sign( dy )
+	var p = start
+	var points : Array = [p]
+	
+	var ix = 0
+	var iy = 0
+	
+	while ix < nx || iy < ny:
+		if ( ( 1 + ( ix << 1) ) * ny < ( 1 + ( iy << 1) ) * nx ):
+			p.x += signX
+			ix +=1
+		else:
+			p[1] += signY
+			iy += 1
+		points.append(p)
+	return points
 
 func update_turn():
 	var current_entity = entities[turn_index]
@@ -128,7 +162,7 @@ func find_path(start: Vector2, end: Vector2):
 				shortest_i = i
 				shortest_node = n
 		
-		for dir in [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]:
+		for dir in DIRS:
 			var pos = shortest_node.pos + dir
 			if pos == end:
 				var path = []

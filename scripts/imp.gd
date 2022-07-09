@@ -4,19 +4,30 @@ onready var spr = $Sprite
 
 func _ready():
 	$AnimationPlayer.play("Idle")
+	hp = 2
+
+func die():
+	SFX.play_random("skull_dies", 4)
+	world.delete_entity(self)
 
 func take_turn():
-	if turn % 2 == 0:
-		return true
-	var p_pos = world.player.map_pos
-	if (map_pos - p_pos).length() > 1:
-		var path = world.find_path(map_pos, p_pos)
-		var dir = map_pos - p_pos
-		if dir.x > 0:
-			spr.flip_h = false
-		elif dir.x < 0:
-			spr.flip_h = true
-		move_self(path[len(path) - 1])
-	else:
-		world.player.hp -= 1
+	var line_of_sight = world.line_of_sight(map_pos, p_pos)
+	update_aggro(line_of_sight)
+	if line_of_sight:
+		aggro = true
+		player_last_pos = p_pos
+	if aggro:
+		if turn % 2 == 0:
+			for d in world.DIRS:
+				if (map_pos + d == p_pos or map_pos + d * 2 == p_pos):
+					world.player.hp -= 1
+					return true
+			
+			var path = world.find_path(map_pos, player_last_pos)
+			var dir = map_pos - p_pos
+			flip_spr(dir.x, spr)
+			move_self(path[len(path) - 1])
+			
+			line_of_sight = line_of_sight or world.line_of_sight(map_pos, p_pos)
+			aggro = line_of_sight or map_pos != player_last_pos
 	return true

@@ -48,7 +48,7 @@ files = [ "res://assets/ost/exploration/_Exploration Base.ogg" ]
 
 [node name="HighAdd" type="Node" parent="Exploration"]
 script = ExtResource( 3 )
-chance = 0.5
+chance = 0.75
 files = [ "res://assets/ost/exploration/Exploration Add 1.ogg", "res://assets/ost/exploration/Exploration Add 2.ogg", "res://assets/ost/exploration/Exploration Add 3.ogg", "res://assets/ost/exploration/Exploration Add 4.wav.ogg" ]
 
 [node name="BaseAdd" type="Node" parent="Exploration"]
@@ -66,7 +66,7 @@ files = [ "res://assets/ost/combat/_Combat Base.ogg" ]
 
 [node name="HighAdd" type="Node" parent="Combat"]
 script = ExtResource( 3 )
-chance = 0.5
+chance = 0.75
 files = [ "res://assets/ost/combat/Combat Add 1.ogg", "res://assets/ost/combat/Combat Add 2.ogg", "res://assets/ost/combat/Combat Add 3.ogg", "res://assets/ost/combat/Combat Add 4.ogg" ]
 
 [node name="BaseAdd" type="Node" parent="Combat"]
@@ -84,7 +84,7 @@ files = [ "res://assets/ost/puzzle/_Puzzle Base.ogg" ]
 
 [node name="HighAdd" type="Node" parent="Puzzle"]
 script = ExtResource( 3 )
-chance = 0.5
+chance = 0.75
 files = [ "res://assets/ost/puzzle/Puzzle Add 1.ogg", "res://assets/ost/puzzle/Puzzle Add 2.ogg", "res://assets/ost/puzzle/Puzzle Add 3.ogg", "res://assets/ost/puzzle/Puzzle Add 4.ogg" ]
 
 [node name="BaseAdd" type="Node" parent="Puzzle"]
@@ -102,7 +102,7 @@ files = [ "res://assets/ost/shrine/_Sacred Place Base.ogg" ]
 
 [node name="HighAdd" type="Node" parent="Shrine"]
 script = ExtResource( 3 )
-chance = 0.5
+chance = 0.75
 files = [ "res://assets/ost/shrine/Sacred Place Add 1.ogg", "res://assets/ost/shrine/Sacred Place Add 2.ogg", "res://assets/ost/shrine/Sacred Place Add 3.ogg", "res://assets/ost/shrine/Sacred Place Add 4.ogg" ]
 
 [node name="BaseAdd" type="Node" parent="Shrine"]

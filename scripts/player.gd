@@ -23,6 +23,7 @@ func set_action(v):
 				anim.play("Move")
 			ACTIONS.ATTACK:
 				anim.play("Attack", -1, 1.5)
+				SFX.play_random("knife", 4)
 			ACTIONS.SPELL:
 				anim.play("Spell", -1, 0.8)
 				SFX.play_random("spell_prepare", 4)
@@ -32,6 +33,7 @@ func _ready():
 	self.map_pos = start_pos
 	self.weapon = Universe.player_weapon
 	self.spell = Universe.player_spell
+	hp = 5
 	anim.play("Move")
 	world.player = self
 	update_items()
@@ -52,6 +54,9 @@ func grab_item(pos: Vector2):
 			add_child(weapon_node)
 		update_items()
 
+func damage():
+	SFX.play_random("player_gets_damage", 4)
+
 func update_items():
 	weapon.world = world
 	spell.world = world
@@ -69,7 +74,7 @@ func eval_action(dir: Vector2):
 		ACTIONS.ATTACK:
 			self.current_action = ACTIONS.MOVE
 			if weapon.use(map_pos, dir):
-				SFX.play_random("knife", 4)
+				SFX.play_random("knife_hit", 4)
 				return true
 		ACTIONS.SPELL:
 			self.current_action = ACTIONS.MOVE
@@ -128,4 +133,5 @@ func end_turn():
 	if cell.item:
 		if cell.item.type == cell.item.ITEM_TYPES.EXIT:
 			var room = Universe.get_random_room()
+			SFX.play_random("footstep_multi", 6)
 			get_tree().change_scene_to(room)
