@@ -5,6 +5,7 @@ export var start_pos: Vector2 = Vector2.ZERO
 var map_pos = Vector2.ZERO setget set_map_pos
 var is_player = false
 var hp = 3 setget set_hp
+var max_hp = 3
 var turn = 0
 var tween: Tween
 var aggro = false

@@ -5,6 +5,7 @@ onready var spr = $Sprite
 func _ready():
 	$AnimationPlayer.play("Idle")
 	hp = 2
+	max_hp = 2
 
 func take_turn():
 	var line_of_sight = world.line_of_sight(map_pos, p_pos)

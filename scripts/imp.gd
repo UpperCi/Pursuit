@@ -5,6 +5,7 @@ onready var spr = $Sprite
 func _ready():
 	$AnimationPlayer.play("Idle")
 	hp = 2
+	max_hp = 2
 
 func die():
 	SFX.play_random("skull_dies", 4)

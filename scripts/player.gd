@@ -33,7 +33,8 @@ func _ready():
 	self.map_pos = start_pos
 	self.weapon = Universe.player_weapon
 	self.spell = Universe.player_spell
-	hp = 5
+	hp = 6
+	max_hp = 6
 	anim.play("Move")
 	world.player = self
 	update_items()
@@ -87,15 +88,15 @@ func eval_action(dir: Vector2):
 
 func update_ui():
 	var state_node = ui.get_node("state")
-	match current_action:
-		ACTIONS.MOVE:
-			state_node.text = "Move"
-		ACTIONS.ATTACK:
-			state_node.text = "Attack"
-		ACTIONS.SPELL:
-			state_node.text = "Spell"
 	
-	ui.get_node("hp").text = "hp: " + str(hp)
+	ui.get_node("Weapon/FG").visible = (current_action == ACTIONS.ATTACK)
+	ui.get_node("Spell/FG").visible = (current_action == ACTIONS.SPELL)
+	
+	var hp_even = floor(hp / 2.0)
+	var hp_odd = ceil(hp / 2.0)
+	ui.get_node("HP_Even").value = hp_even
+	ui.get_node("HP_Odd").value = hp_odd
+	ui.get_node("room_num").text = str(Universe.room_num + 1)
 
 func start_turn():
 	pass
@@ -133,5 +134,6 @@ func end_turn():
 	if cell.item:
 		if cell.item.type == cell.item.ITEM_TYPES.EXIT:
 			var room = Universe.get_random_room()
-			SFX.play_random("footstep_multi", 6)
+			SFX.play_random("footstep_multi", 3)
+			Universe.room_num += 1
 			get_tree().change_scene_to(room)

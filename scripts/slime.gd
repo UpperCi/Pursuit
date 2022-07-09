@@ -18,8 +18,9 @@ func take_turn():
 		anim.play("Jump")
 		for i in range(2):
 			var path = world.find_path(map_pos, player_last_pos)
-			print(len(path))
-			if len(path) <= 1:
+			var path_player = world.find_path(map_pos, p_pos)
+			if len(path_player) <= 1:
+				print(path)
 				world.player.hp -= 1
 				return true
 			var dir = map_pos - p_pos
