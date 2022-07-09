@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_spell_cast_poison_03.wav-38aa0cd7bcd6400cc024e2a4032992be.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_spell_cast_poison_03.wav"
+dest_files=[ "res://.import/sfx_spell_cast_poison_03.wav-38aa0cd7bcd6400cc024e2a4032992be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
