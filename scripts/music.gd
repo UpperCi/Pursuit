@@ -15,6 +15,7 @@ func queue_song(song):
 	for s in songs:
 		if s.playing:
 			s.queued_song = song
+			new_song = true
 			return
 	play(song)
 
@@ -23,7 +24,6 @@ func play(song):
 		if s.name == song:
 			s.playing = true
 			s.cycle_timer = 1
-			new_song = true
 		elif s.playing:
 			s.stop()
 
@@ -46,4 +46,5 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	animating = false
+	new_song = false
 	AudioServer.set_bus_volume_db(music_bus, 0)

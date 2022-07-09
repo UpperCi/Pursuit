@@ -9,5 +9,4 @@ start_pos = Vector2( 6, 6 )
 type = 1
 
 [node name="Exit" type="Sprite" parent="."]
-position = Vector2( 8, 8 )
 texture = ExtResource( 1 )

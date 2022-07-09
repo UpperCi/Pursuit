@@ -16,4 +16,4 @@ func _ready():
 
 func set_map_pos(v):
 	map_pos = v
-	position = map_pos * 16
+	position = map_pos * 16 + Vector2(8, 8)

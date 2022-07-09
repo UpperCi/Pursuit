@@ -8,16 +8,29 @@ enum ACTIONS {
 	SPELL
 }
 
-var current_action = ACTIONS.MOVE
+var current_action = ACTIONS.MOVE setget set_action
 var weapon = null
 var spell = null
 
 onready var ui = $UI
+onready var anim = $AnimationPlayer
+
+func set_action(v):
+	current_action = v
+	anim.play("RESET")
+	match v:
+		ACTIONS.MOVE:
+			anim.play("Move")
+		ACTIONS.ATTACK:
+			anim.play("Attack", -1, 1.5)
+		ACTIONS.SPELL:
+			anim.play("Spell", -1, 0.8)
 
 func _ready():
 	self.map_pos = start_pos
 	self.weapon = Universe.player_weapon
 	self.spell = Universe.player_spell
+	anim.play("Move")
 	world.player = self
 	update_items()
 
@@ -50,11 +63,11 @@ func eval_action(dir: Vector2):
 		ACTIONS.MOVE:
 			return move_self(map_pos + dir)
 		ACTIONS.ATTACK:
-			current_action = ACTIONS.MOVE
+			self.current_action = ACTIONS.MOVE
 			if weapon.use(map_pos, dir):
 				return true
 		ACTIONS.SPELL:
-			current_action = ACTIONS.MOVE
+			self.current_action = ACTIONS.MOVE
 			if spell.cool_left <= 0:
 				if spell.use(map_pos, dir):
 					spell.cool_left = spell.COOLDOWN
@@ -79,11 +92,11 @@ func start_turn():
 
 func take_turn():
 	if Input.is_action_just_pressed("player_cancel"):
-		current_action = ACTIONS.MOVE
+		self.current_action = ACTIONS.MOVE
 	elif Input.is_action_just_pressed("player_attack"):
-		current_action = ACTIONS.ATTACK
+		self.current_action = ACTIONS.ATTACK
 	elif Input.is_action_just_pressed("player_spell") and spell.cool_left <= 0:
-		current_action = ACTIONS.SPELL
+		self.current_action = ACTIONS.SPELL
 	
 	if Input.is_action_just_pressed("player_grab"):
 		grab_item(map_pos)

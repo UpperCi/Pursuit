@@ -11,7 +11,7 @@ shader_param/stretch_screen = true
 shader_param/do_scanline = true
 shader_param/do_noise = true
 shader_param/do_subpixel = true
-shader_param/slot_mask = false
+shader_param/slot_mask = true
 shader_param/blur_slots = true
 shader_param/rotate_pixels = false
 shader_param/stretch = 0.3
@@ -22,7 +22,7 @@ shader_param/rgb_min = 0.3
 shader_param/rgb_mult = 1.1
 shader_param/rgb_treshold = 0.2
 shader_param/backlight = 0.4
-shader_param/noise_mult = 0.1
+shader_param/noise_mult = 0.05
 shader_param/PI = 3.14159
 
 [node name="GFX" type="Control"]
