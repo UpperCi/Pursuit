@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_footstep_single_05.wav-86f72321287fe33bbe8f0b37f0df6100.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_footstep_single_05.wav"
+dest_files=[ "res://.import/sfx_footstep_single_05.wav-86f72321287fe33bbe8f0b37f0df6100.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
