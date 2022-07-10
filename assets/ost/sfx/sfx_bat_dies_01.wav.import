@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_bat_dies_01.wav-3e339801845ec1aa66a0180039d57e74.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_bat_dies_01.wav"
+dest_files=[ "res://.import/sfx_bat_dies_01.wav-3e339801845ec1aa66a0180039d57e74.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

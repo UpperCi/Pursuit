@@ -5,7 +5,8 @@ class_name Player
 enum ACTIONS {
 	ATTACK,
 	MOVE,
-	SPELL
+	SPELL,
+	CONFIRM_ITEM
 }
 
 var current_action = ACTIONS.MOVE setget set_action
@@ -50,16 +51,36 @@ func grab_item(pos: Vector2):
 		if 'is_spell' in weapon_node:
 			drop_item(map_pos, load(spell.scene), spell.img)
 			spell = weapon_node
+			if not spell.item_name in Universe.seen_items:
+				init_desc(spell)
 		else:
 			drop_item(map_pos, load(weapon.scene), weapon.img)
 			weapon = weapon_node
 			add_child(weapon_node)
+			if not weapon.item_name in Universe.seen_items:
+				init_desc(weapon)
 		update_items()
 		return true
 	return false
 
+func init_desc(item):
+	current_action = ACTIONS.CONFIRM_ITEM
+	ui.get_node("ItemDesc/Name").text = item.item_name
+	ui.get_node("ItemDesc/Desc").text = item.item_desc
+	ui.get_node("ItemDesc/ItemContainer/Item").texture = item.img
+	ui.get_node("ItemDesc").visible = true
+	current_action = ACTIONS.CONFIRM_ITEM
+	Universe.seen_items.push_back(item.item_name)
+
+func _on_MenuButton_pressed():
+	current_action = ACTIONS.MOVE
+	ui.get_node("ItemDesc").visible = false
+
 func damage():
 	SFX.play_random("player_gets_damage", 4)
+
+func die():
+	SceneSwitcher.switch(load("res://scenes/DeathMenu.tscn"))
 
 func update_items():
 	weapon.world = world
@@ -113,12 +134,15 @@ func start_turn():
 	pass
 
 func take_turn():
+	if current_action == ACTIONS.CONFIRM_ITEM:
+		update_ui()
+		return
 	if Input.is_action_just_pressed("player_cancel"):
-		self.current_action = ACTIONS.MOVE
+		current_action = ACTIONS.MOVE
 	elif Input.is_action_just_pressed("player_attack"):
-		self.current_action = ACTIONS.ATTACK
+		current_action = ACTIONS.ATTACK
 	elif Input.is_action_just_pressed("player_spell") and spell.cool_left <= 0:
-		self.current_action = ACTIONS.SPELL
+		current_action = ACTIONS.SPELL
 	
 	if Input.is_action_just_pressed("player_grab"):
 		return grab_item(map_pos)

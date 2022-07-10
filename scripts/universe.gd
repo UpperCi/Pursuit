@@ -15,6 +15,7 @@ var past_types = [0]
 var room_num = 0
 var player_hp = 6
 var played_voices = []
+var seen_items = []
 
 onready var total_voices = GOD_VOICES + HERO_VOICES
 onready var talker = $Voice

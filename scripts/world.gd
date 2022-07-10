@@ -36,6 +36,8 @@ func get_cell(pos: Vector2):
 	var entity = false
 	var item = false
 	var tile = tilemap.get_cell(pos.x, pos.y)
+	var closed_exit = false
+	var chest = false
 	
 	for e in entities:
 		if e.map_pos == pos:
@@ -45,17 +47,22 @@ func get_cell(pos: Vector2):
 	for i in items:
 		if i.map_pos == pos:
 			item = i
+			if i.type == i.ITEM_TYPES.EXIT:
+				closed_exit = not i.is_open
+			if i.type == i.ITEM_TYPES.CHEST:
+				chest = true
 			break
 	
 	return {
 		"tile": tile,
 		"entity": entity,
 		"item": item,
-		"valid_move": (tile == -1 && not entity),
-		"valid_path": (tile == -1)
+		"valid_move": (tile == -1 && not entity && not closed_exit),
+		"valid_path": (tile == -1 && not chest)
 	}
 
 func _ready():
+	randomize()
 	if talk:
 		Universe.talk()
 	
@@ -122,7 +129,20 @@ func delete_item(i):
 	i.queue_free()
 
 func move_entity(e, new_pos: Vector2):
-	if get_cell(new_pos).valid_move:
+	var cell = get_cell(new_pos)
+	if cell.valid_move:
+		if cell.item:
+			if cell.item.type == cell.item.ITEM_TYPES.CHEST:
+				cell.item.open()
+				VFX.create("Open", new_pos, new_pos, self)
+				return true
+			if cell.item.type == cell.item.ITEM_TYPES.HEART:
+				if e.is_player:
+					if e.hp != e.max_hp:
+						delete_item(cell.item)
+						cell.item = false
+						VFX.create("Open", new_pos, new_pos, self)
+						e.hp += 1
 		e.map_pos = new_pos
 		return true
 	return false
@@ -130,6 +150,13 @@ func move_entity(e, new_pos: Vector2):
 func delete_entity(e):
 	entities.erase(e)
 	e.queue_free()
+	
+	for e in entities:
+		if not e.is_player:
+			return
+	for i in items:
+		if i.type == i.ITEM_TYPES.EXIT:
+			i.open()
 
 func _process(delta):
 	update_turn()
@@ -149,7 +176,8 @@ func pos_in(pos: Vector2, path_nodes):
 	return false
 
 func add_item(item):
-	pass
+	items.push_back(item)
+	item_node.add_child(item)
 
 func find_path(start: Vector2, end: Vector2):
 	var path_nodes = [{"pos": start, "prev": null, "dist": 0, "passed": false}]

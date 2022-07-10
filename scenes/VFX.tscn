@@ -4,6 +4,7 @@
 [ext_resource path="res://scenes/effects/Effect.tscn" type="PackedScene" id=2]
 
 [node name="VFX" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Effect" parent="." instance=ExtResource( 2 )]

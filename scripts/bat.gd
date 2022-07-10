@@ -7,6 +7,10 @@ func _ready():
 	hp = 2
 	max_hp = 2
 
+func die():
+	SFX.play_random("bat_dies", 4)
+	world.delete_entity(self)
+
 func take_turn():
 	var line_of_sight = world.line_of_sight(map_pos, p_pos)
 	update_aggro(line_of_sight)

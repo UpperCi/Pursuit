@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/white.png" type="Texture" id=1]
 [ext_resource path="res://assets/shaders/crt.shader" type="Shader" id=2]
 [ext_resource path="res://scripts/GFX.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/trans.shader" type="Shader" id=4]
+[ext_resource path="res://assets/shaders/noiseTexture(1).png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/res = Vector2( 256, 144 )
+shader_param/trans_fill = Vector3( 0.27, 0.1568, 0.2352 )
+shader_param/trans_outline = Vector3( 1, 1, 1 )
+shader_param/trans_time = -0.544
+shader_param/noise = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -26,6 +36,7 @@ shader_param/noise_mult = 0.05
 shader_param/PI = 3.14159
 
 [node name="GFX" type="Control"]
+pause_mode = 2
 margin_right = 256.0
 margin_bottom = 144.0
 script = ExtResource( 3 )
@@ -36,6 +47,22 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="Transition" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Transition"]
+material = SubResource( 2 )
+margin_right = 256.0
+margin_bottom = 144.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
 
 [node name="PostProcess" type="Control" parent="CanvasLayer"]
 visible = false

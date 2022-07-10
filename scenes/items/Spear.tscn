@@ -7,3 +7,6 @@
 script = ExtResource( 1 )
 img = ExtResource( 2 )
 scene = "res://scenes/items/Spear.tscn"
+item_name = "Spear"
+item_desc = "Range 1 Weapon
+Can't hit adjacent enemies."

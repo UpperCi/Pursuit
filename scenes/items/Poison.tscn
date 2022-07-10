@@ -7,3 +7,7 @@
 script = ExtResource( 2 )
 img = ExtResource( 1 )
 scene = "res://scenes/items/Poison.tscn"
+item_name = "Poison"
+item_desc = "Melee Spell
+Cooldown: 3 turns
+Explodes upon impact, hitting adjacent tiles."

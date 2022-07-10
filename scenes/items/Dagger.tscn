@@ -7,3 +7,5 @@
 script = ExtResource( 1 )
 img = ExtResource( 2 )
 scene = "res://scenes/items/Dagger.tscn"
+item_name = "Sword"
+item_desc = "Melee Weapon"

@@ -14,9 +14,6 @@ func die():
 func take_turn():
 	var line_of_sight = world.line_of_sight(map_pos, p_pos)
 	update_aggro(line_of_sight)
-	if line_of_sight:
-		aggro = true
-		player_last_pos = p_pos
 	if aggro:
 		if turn % 2 == 0:
 			for d in world.DIRS:
