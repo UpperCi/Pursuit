@@ -14,6 +14,10 @@ var animating = 0
 func queue_song(song):
 	for s in songs:
 		if s.playing:
+			if s.name == "Menu":
+				s.playing = false
+				s.stop()
+				continue
 			s.queued_song = song
 			new_song = true
 			return
@@ -27,10 +31,11 @@ func play(song):
 		elif s.playing:
 			s.stop()
 
+func stop():
+	for s in songs:
+		s.stop()
+
 func _process(delta):
-	#var vol = linear2db(track.timer * 2 + 0.1) - 5
-	#AudioServer.set_bus_volume_db(music_bus, vol)
-	
 	# fade out
 	if time_left < FADE_TIME:
 		if new_song and not animating:
@@ -42,7 +47,6 @@ func _process(delta):
 
 func _ready():
 	songs.erase(anim)
-	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	animating = false

@@ -84,6 +84,8 @@ func damage():
 	SFX.play_random("player_gets_damage", 4)
 
 func die():
+	SFX.play("player_dies_1")
+	Music.stop()
 	SceneSwitcher.switch(load("res://scenes/DeathMenu.tscn"))
 
 func update_items():

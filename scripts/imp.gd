@@ -6,6 +6,7 @@ func _ready():
 	$AnimationPlayer.play("Idle")
 	hp = 2
 	max_hp = 2
+	fire_res = true
 
 func die():
 	SFX.play_random("skull_dies", 4)

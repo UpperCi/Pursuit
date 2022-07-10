@@ -37,7 +37,6 @@ tracks/0/keys = {
 }
 
 [node name="Imp" type="Node2D"]
-position = Vector2( 184, 104 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

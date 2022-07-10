@@ -160,7 +160,10 @@ func update_exits():
 	for i in items:
 		if i.type == i.ITEM_TYPES.EXIT:
 			i.open()
-	
+
+func add_entity(e):
+	entities.push_back(e)
+	entity_node.add_child(e)
 
 func delete_entity(e):
 	entities.erase(e)

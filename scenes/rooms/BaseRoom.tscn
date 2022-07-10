@@ -16,6 +16,7 @@ __meta__ = {
 }
 
 [node name="Exit" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 8, 8 )
 start_pos = Vector2( 0, 0 )
 
 [node name="Entities" type="Node2D" parent="."]
@@ -25,6 +26,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 8, 8 )
 start_pos = Vector2( 0, 0 )
 
 [node name="Tiles" parent="." instance=ExtResource( 4 )]

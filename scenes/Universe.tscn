@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/universe.gd" type="Script" id=1]
-[ext_resource path="res://scenes/rooms/Combat_Linear.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/rooms/Combat_Small.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/rooms/Shrine.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/rooms/Puzzle.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/rooms/Exploration_Maze.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/rooms/Maze.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/rooms/Pit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/rooms/Ruins.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/rooms/Watchers.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/rooms/Haven.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/rooms/Arena.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/rooms/Question.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/rooms/Ratio.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/rooms/Chaos.tscn" type="PackedScene" id=10]
 
 [node name="Universe" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
-rooms = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
+rooms = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [node name="Voice" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

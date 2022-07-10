@@ -10,5 +10,5 @@ func set_snap(v):
 		c.position = c.start_pos * 16 + Vector2(8, 8)
 
 func _process(delta):
-	if Input.is_action_just_released("ui_accept"):
+	if Engine.editor_hint:
 		set_snap(true)

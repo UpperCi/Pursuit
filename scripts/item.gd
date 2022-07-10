@@ -9,6 +9,7 @@ enum ITEM_TYPES {
 
 onready var world = get_parent().get_parent()
 export var start_pos: Vector2 = Vector2.ZERO
+onready var spr = $Sprite
 export (ITEM_TYPES) var type
 
 var is_open = false
@@ -19,8 +20,9 @@ func _ready():
 	set_map_pos(start_pos)
 
 func open():
-	$Exit.texture = load("res://assets/ladder.png")
-	$CPUParticles2D.emitting = true
+	spr.texture = load("res://assets/ladder.png")
+	if has_node("CPUParticles2D"):
+		$CPUParticles2D.emitting = true
 	is_open = true
 
 func set_map_pos(v):

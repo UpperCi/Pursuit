@@ -11,6 +11,7 @@ var tween: Tween
 var aggro = false
 var p_pos = Vector2.ZERO
 var player_last_pos = Vector2.ZERO
+var fire_res = false
 
 onready var world = get_parent().get_parent()
 onready var map_item_scene = preload("res://scenes/Item.tscn")

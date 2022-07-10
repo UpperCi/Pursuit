@@ -16,12 +16,13 @@ func _ready():
 		player.autoplay = false
 		add_child(player)
 		players.push_back(player)
-		player.play(8.7)
+		player.play(duration - 0.1)
 
 func shuffle():
 	var player: AudioStreamPlayer = players[randi() % len(players)]
 	player.play()
 
 func stop():
+	timer = 0
 	for player in players:
 		player.stop()

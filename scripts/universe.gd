@@ -5,7 +5,7 @@ const REROLLS = 1
 const GOD_VOICES = 29
 const HERO_VOICES = 26
 
-export (Array, PackedScene) var rooms
+export (Array, PackedScene) var rooms = []
 
 var player_weapon: PackedScene
 var player_spell: PackedScene
@@ -19,10 +19,14 @@ var tutorial_level = 0
 onready var total_voices = GOD_VOICES + HERO_VOICES
 onready var talker = $Voice
 onready var nothing = preload("res://scenes/items/Nothing.tscn")
+onready var bus = AudioServer.get_bus_index("Voice")
 
 func _ready():
 	player_weapon = nothing
 	player_spell = nothing
+	
+	player_weapon = load("res://scenes/items/Dagger.tscn")
+	player_spell = load("res://scenes/items/Firebolt.tscn")
 
 func talk():
 	if len(played_voices) >= total_voices:
@@ -30,18 +34,21 @@ func talk():
 	while true:
 		var voice = randi() % total_voices
 		if not (voice in played_voices):
+			var vol = 2
 			played_voices.push_back(voice)
 			var file = "res://assets/ost/voices/voiceOver_"
 			if voice >= GOD_VOICES:
 				voice -= GOD_VOICES
 				file += "hero_"
 			else:
+				vol = -1
 				file += "god_"
 			file += "%02d.ogg" % [voice + 1]
-			spit(file)
+			spit(file, vol)
 			return
 
-func spit(line):
+func spit(line, vol = -7):
+	AudioServer.set_bus_volume_db(bus, vol)
 	talker.stop()
 	talker.stream = load(line)
 	talker.play()

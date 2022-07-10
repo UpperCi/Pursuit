@@ -57,6 +57,15 @@ script = ExtResource( 3 )
 chance = 0.0
 files = [ "res://assets/ost/exploration/Exploration BaseAdd 1.ogg", "res://assets/ost/exploration/Exploration BaseAdd 2.ogg", "res://assets/ost/exploration/Exploration BaseAdd 3.ogg", "res://assets/ost/exploration/Exploration BaseAdd 4.ogg" ]
 
+[node name="Menu" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Base" type="Node" parent="Menu"]
+script = ExtResource( 3 )
+duration = 88.0
+sync_id = 1
+files = [ "res://assets/ost/menu/ui_song_v3.ogg" ]
+
 [node name="Combat" type="Node" parent="."]
 script = ExtResource( 2 )
 
