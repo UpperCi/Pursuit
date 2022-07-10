@@ -5,24 +5,24 @@ const REROLLS = 1
 const GOD_VOICES = 29
 const HERO_VOICES = 26
 
-export var player_weapon_start: PackedScene
-export var player_spell_start: PackedScene
 export (Array, PackedScene) var rooms
 
-var player_weapon: Node2D
-var player_spell: Node2D
+var player_weapon: PackedScene
+var player_spell: PackedScene
 var past_types = [0]
 var room_num = 0
 var player_hp = 6
 var played_voices = []
 var seen_items = []
+var tutorial_level = 0
 
 onready var total_voices = GOD_VOICES + HERO_VOICES
 onready var talker = $Voice
+onready var nothing = preload("res://scenes/items/Nothing.tscn")
 
 func _ready():
-	player_weapon = player_weapon_start.instance()
-	player_spell = player_spell_start.instance()
+	player_weapon = nothing
+	player_spell = nothing
 
 func talk():
 	if len(played_voices) >= total_voices:
@@ -38,11 +38,21 @@ func talk():
 			else:
 				file += "god_"
 			file += "%02d.ogg" % [voice + 1]
-			talker.stream = load(file)
-			talker.play()
+			spit(file)
 			return
 
+func spit(line):
+	talker.stop()
+	talker.stream = load(line)
+	talker.play()
+
 func get_random_room():
+	if tutorial_level < 3:
+		var room_scene = "res://scenes/rooms/tutorial_" + \
+		str(tutorial_level + 1) + ".tscn"
+		tutorial_level += 1
+		return load(room_scene)
+	
 	var room_scene = rooms[randi() % len(rooms)]
 	var room = room_scene.instance()
 	var rerolls = REROLLS

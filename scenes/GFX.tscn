@@ -11,7 +11,7 @@ shader = ExtResource( 4 )
 shader_param/res = Vector2( 256, 144 )
 shader_param/trans_fill = Vector3( 0.27, 0.1568, 0.2352 )
 shader_param/trans_outline = Vector3( 1, 1, 1 )
-shader_param/trans_time = -0.544
+shader_param/trans_time = -1.0
 shader_param/noise = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -48,23 +48,40 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="Transition" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
+position = Vector2( 128, 72 )
+scale = Vector2( 1.28, 0.72 )
+copy_mode = 2
+
+[node name="Transition" type="Control" parent="CanvasLayer/BackBufferCopy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = -100.0
+margin_bottom = -100.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Transition"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackBufferCopy/Transition"]
 material = SubResource( 2 )
-margin_right = 256.0
-margin_bottom = 144.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PostProcess" type="Control" parent="CanvasLayer"]
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="CanvasLayer"]
+position = Vector2( 128, 72 )
+scale = Vector2( 1.28, 0.72 )
+copy_mode = 2
+
+[node name="PostProcess" type="Control" parent="CanvasLayer/BackBufferCopy2"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,10 +90,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PostProcess"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackBufferCopy2/PostProcess"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = -100.0
+margin_bottom = -100.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
@@ -90,7 +111,7 @@ layer = -1
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 margin_right = 256.0
 margin_bottom = 144.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.133333, 0.12549, 0.203922, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

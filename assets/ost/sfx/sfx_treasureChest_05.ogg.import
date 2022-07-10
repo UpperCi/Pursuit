@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_treasureChest_05.ogg-d16598cdb99b5f8a26cc8cc8c6ea34ff.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_treasureChest_05.ogg"
+dest_files=[ "res://.import/sfx_treasureChest_05.ogg-d16598cdb99b5f8a26cc8cc8c6ea34ff.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

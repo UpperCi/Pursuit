@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_footstep_single_01.ogg-968438c4f82b4d4f263d9a21cb4eb1a5.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_footstep_single_01.ogg"
+dest_files=[ "res://.import/sfx_footstep_single_01.ogg-968438c4f82b4d4f263d9a21cb4eb1a5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

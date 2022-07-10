@@ -83,8 +83,8 @@ position = Vector2( 152, 88 )
 start_pos = Vector2( 9, 5 )
 
 [node name="Bat2" parent="Entities" instance=ExtResource( 15 )]
-position = Vector2( 72, 120 )
-start_pos = Vector2( 4, 7 )
+position = Vector2( 56, 56 )
+start_pos = Vector2( 3, 3 )
 
 [node name="Test" type="Sprite" parent="."]
 visible = false

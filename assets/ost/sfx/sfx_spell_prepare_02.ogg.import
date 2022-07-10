@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_spell_prepare_02.ogg-926be2c924b83c9feec405161acc78e9.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_spell_prepare_02.ogg"
+dest_files=[ "res://.import/sfx_spell_prepare_02.ogg-926be2c924b83c9feec405161acc78e9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

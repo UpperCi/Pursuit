@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sword.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://scripts/dagger.gd\"
+
+func start():
+	print(Universe.tutorial_level)
+	if Universe.tutorial_level <= 2:
+		Universe.spit(\"res://assets/ost/voices/sfx_voiceOver_Tutorial Unsheathe & Attack.ogg\")
+"
+
+[node name="Dagger" type="Node2D"]
+script = SubResource( 1 )
+img = ExtResource( 2 )
+scene = "res://scenes/items/Tutorial_Dagger.tscn"
+item_name = "Sword"
+item_desc = "Melee Weapon
+Unsheate weapon with [E]
+Execute attack by moving"

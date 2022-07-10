@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_bat_dies_04.ogg-5beefead49c141c19ac160031bd78b00.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_bat_dies_04.ogg"
+dest_files=[ "res://.import/sfx_bat_dies_04.ogg-5beefead49c141c19ac160031bd78b00.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

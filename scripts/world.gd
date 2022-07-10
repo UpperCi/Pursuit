@@ -9,6 +9,7 @@ enum ROOM_TYPES {
 
 export (ROOM_TYPES) var type
 export (bool) var talk = true
+export (String, FILE) var spit = ""
 
 const DIRS = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]
 
@@ -65,9 +66,12 @@ func _ready():
 	randomize()
 	if talk:
 		Universe.talk()
+	elif spit != "":
+		Universe.spit(spit)
 	
 	get_entities()
 	get_items()
+	update_exits()
 	
 	match type:
 		ROOM_TYPES.COMBAT:
@@ -134,12 +138,14 @@ func move_entity(e, new_pos: Vector2):
 		if cell.item:
 			if cell.item.type == cell.item.ITEM_TYPES.CHEST:
 				cell.item.open()
+				SFX.play_random("treasureChest", 6)
 				VFX.create("Open", new_pos, new_pos, self)
 				return true
 			if cell.item.type == cell.item.ITEM_TYPES.HEART:
 				if e.is_player:
 					if e.hp != e.max_hp:
 						delete_item(cell.item)
+						SFX.play_random("pickUp_heart", 6)
 						cell.item = false
 						VFX.create("Open", new_pos, new_pos, self)
 						e.hp += 1
@@ -147,16 +153,19 @@ func move_entity(e, new_pos: Vector2):
 		return true
 	return false
 
-func delete_entity(e):
-	entities.erase(e)
-	e.queue_free()
-	
+func update_exits():
 	for e in entities:
 		if not e.is_player:
 			return
 	for i in items:
 		if i.type == i.ITEM_TYPES.EXIT:
 			i.open()
+	
+
+func delete_entity(e):
+	entities.erase(e)
+	e.queue_free()
+	update_exits()
 
 func _process(delta):
 	update_turn()

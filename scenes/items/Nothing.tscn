@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://scripts/spell.gd\"
+
+func start():
+	COOLDOWN = 100000
+	cool_left = COOLDOWN
+
+func use(a, b):
+	return false
+"
+
+[node name="Nothing" type="Node2D"]
+script = SubResource( 1 )

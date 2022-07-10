@@ -11,6 +11,9 @@ margin_bottom = 20.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 4 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 text = "Settings"
 
 [node name="bg" type="Label" parent="."]
@@ -36,3 +39,7 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="button_down" from="." to="." method="_on_MenuButton_button_down"]
+[connection signal="focus_entered" from="." to="." method="_on_MenuButton_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_MenuButton_mouse_entered"]

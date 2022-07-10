@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_voiceOver_Tutorial Learn Spell & Cancel.ogg-7436fa4d1442a639e371ce44b85bac0d.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/voices/sfx_voiceOver_Tutorial Learn Spell & Cancel.ogg"
+dest_files=[ "res://.import/sfx_voiceOver_Tutorial Learn Spell & Cancel.ogg-7436fa4d1442a639e371ce44b85bac0d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

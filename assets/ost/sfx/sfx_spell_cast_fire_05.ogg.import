@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_spell_cast_fire_05.ogg-87c3ecdd20749c77442ac873029e971a.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_spell_cast_fire_05.ogg"
+dest_files=[ "res://.import/sfx_spell_cast_fire_05.ogg-87c3ecdd20749c77442ac873029e971a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

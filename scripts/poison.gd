@@ -1,6 +1,6 @@
 extends "res://scripts/spell.gd"
 
-func _ready():
+func start():
 	COOLDOWN = 4
 
 func use(start_pos: Vector2, dir: Vector2):

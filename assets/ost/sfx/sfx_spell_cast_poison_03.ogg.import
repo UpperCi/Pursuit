@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_spell_cast_poison_03.ogg-3f965039ef9911504e1e274e858eafdf.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_spell_cast_poison_03.ogg"
+dest_files=[ "res://.import/sfx_spell_cast_poison_03.ogg-3f965039ef9911504e1e274e858eafdf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

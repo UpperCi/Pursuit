@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_skull_dies_04.ogg-8fb968f2062ba60a616d5df14cac9f01.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_skull_dies_04.ogg"
+dest_files=[ "res://.import/sfx_skull_dies_04.ogg-8fb968f2062ba60a616d5df14cac9f01.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -33,8 +33,8 @@ func set_action(v):
 
 func _ready():
 	self.map_pos = start_pos
-	self.weapon = Universe.player_weapon
-	self.spell = Universe.player_spell
+	weapon = Universe.player_weapon.instance()
+	spell = Universe.player_spell.instance()
 	hp = Universe.player_hp
 	max_hp = 6
 	anim.play("Move")
@@ -51,11 +51,15 @@ func grab_item(pos: Vector2):
 		if 'is_spell' in weapon_node:
 			drop_item(map_pos, load(spell.scene), spell.img)
 			spell = weapon_node
+			SFX.play_random("pickUp_spell", 4)
+			Universe.player_spell = cell.item.target_weapon
 			if not spell.item_name in Universe.seen_items:
 				init_desc(spell)
 		else:
 			drop_item(map_pos, load(weapon.scene), weapon.img)
 			weapon = weapon_node
+			SFX.play_random("pickUp_weapon", 4)
+			Universe.player_weapon = cell.item.target_weapon
 			add_child(weapon_node)
 			if not weapon.item_name in Universe.seen_items:
 				init_desc(weapon)
@@ -113,8 +117,6 @@ func eval_action(dir: Vector2):
 	return false
 
 func update_ui():
-	var state_node = ui.get_node("state")
-	
 	ui.get_node("Weapon/FG").visible = (current_action == ACTIONS.ATTACK)
 	ui.get_node("Spell/FG").visible = (current_action == ACTIONS.SPELL)
 	
@@ -136,6 +138,9 @@ func start_turn():
 func take_turn():
 	if current_action == ACTIONS.CONFIRM_ITEM:
 		update_ui()
+		if Input.is_action_just_pressed("player_attack"):
+			_on_MenuButton_pressed()
+			pass
 		return
 	if Input.is_action_just_pressed("player_cancel"):
 		current_action = ACTIONS.MOVE

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/firebolt.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://scripts/firebolt.gd\"
+
+func start():
+	if Universe.tutorial_level <= 3:
+		Universe.spit(\"res://assets/ost/voices/sfx_voiceOver_Tutorial Spellcast_1.ogg\")
+"
+
+[node name="Firebolt" type="Node2D"]
+script = SubResource( 1 )
+img = ExtResource( 2 )
+item_name = "Firebolt"
+item_desc = "Range 3 Spell
+Cooldown: 3 Turns
+Prepare spell with [Q]
+Cast spell by moving"

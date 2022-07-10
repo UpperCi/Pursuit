@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_pickUp_spell_04.ogg-ce517c6d79d8f3477de6c83379368129.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_pickUp_spell_04.ogg"
+dest_files=[ "res://.import/sfx_pickUp_spell_04.ogg-ce517c6d79d8f3477de6c83379368129.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

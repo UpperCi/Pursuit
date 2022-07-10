@@ -9,4 +9,4 @@ img = ExtResource( 2 )
 scene = "res://scenes/items/Firebolt.tscn"
 item_name = "Firebolt"
 item_desc = "Range 3 Spell
-Cooldown: 3 turns"
+Cooldown: 3 Turns"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Statue.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/statue.png" type="Texture" id=2]
+
+[node name="Statue" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+is_player = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )

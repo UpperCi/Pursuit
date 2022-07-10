@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_slime_dies_02.ogg-40f9db64dab4788383a533a5cc9c4e99.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_slime_dies_02.ogg"
+dest_files=[ "res://.import/sfx_slime_dies_02.ogg-40f9db64dab4788383a533a5cc9c4e99.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

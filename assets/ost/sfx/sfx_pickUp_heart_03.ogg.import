@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_pickUp_heart_03.ogg-57fbfa75d384d0d0966cc4b84c9e8f12.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_pickUp_heart_03.ogg"
+dest_files=[ "res://.import/sfx_pickUp_heart_03.ogg-57fbfa75d384d0d0966cc4b84c9e8f12.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

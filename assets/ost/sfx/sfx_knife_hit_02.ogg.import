@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_knife_hit_02.ogg-a9c9bc7c29d6a38f58792272b1fdc836.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_knife_hit_02.ogg"
+dest_files=[ "res://.import/sfx_knife_hit_02.ogg-a9c9bc7c29d6a38f58792272b1fdc836.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
