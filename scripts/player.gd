@@ -14,6 +14,7 @@ var spell = null
 
 onready var ui = $UI
 onready var anim = $AnimationPlayer
+onready var pause_scene = preload("res://scenes/PauseMenu.tscn")
 
 func set_action(v):
 	if v != current_action:
@@ -33,7 +34,7 @@ func _ready():
 	self.map_pos = start_pos
 	self.weapon = Universe.player_weapon
 	self.spell = Universe.player_spell
-	hp = 6
+	hp = Universe.player_hp
 	max_hp = 6
 	anim.play("Move")
 	world.player = self
@@ -54,6 +55,8 @@ func grab_item(pos: Vector2):
 			weapon = weapon_node
 			add_child(weapon_node)
 		update_items()
+		return true
+	return false
 
 func damage():
 	SFX.play_random("player_gets_damage", 4)
@@ -61,6 +64,8 @@ func damage():
 func update_items():
 	weapon.world = world
 	spell.world = world
+	weapon.start()
+	spell.start()
 	weapon.player = self
 	spell.player = self
 	ui.get_node("Weapon").texture = weapon.img
@@ -92,11 +97,17 @@ func update_ui():
 	ui.get_node("Weapon/FG").visible = (current_action == ACTIONS.ATTACK)
 	ui.get_node("Spell/FG").visible = (current_action == ACTIONS.SPELL)
 	
-	var hp_even = floor(hp / 2.0)
-	var hp_odd = ceil(hp / 2.0)
-	ui.get_node("HP_Even").value = hp_even
-	ui.get_node("HP_Odd").value = hp_odd
+	ui.get_node("HP_Even").value = floor(hp / 2.0)
+	ui.get_node("HP_Odd").value = ceil(hp / 2.0)
 	ui.get_node("room_num").text = str(Universe.room_num + 1)
+	
+	ui.get_node("Mana").max_value = spell.COOLDOWN - 1
+	ui.get_node("Mana").value = (spell.COOLDOWN - spell.cool_left) - 1
+	
+	if spell.cool_left > 0:
+		ui.get_node("Spell").self_modulate = Color(1,1,1,0.5)
+	else:
+		ui.get_node("Spell").self_modulate = Color(1,1,1,1)
 
 func start_turn():
 	pass
@@ -110,8 +121,7 @@ func take_turn():
 		self.current_action = ACTIONS.SPELL
 	
 	if Input.is_action_just_pressed("player_grab"):
-		grab_item(map_pos)
-		return true
+		return grab_item(map_pos)
 	
 	if Input.is_action_just_pressed("player_right"):
 		$Sprite.flip_h = false
@@ -123,6 +133,11 @@ func take_turn():
 		return eval_action(Vector2.UP)
 	elif Input.is_action_just_pressed("player_down"):
 		return eval_action(Vector2.DOWN)
+	
+	if Input.is_action_just_pressed("ui_pause"):
+		var pause_node = pause_scene.instance()
+		get_tree().root.add_child(pause_node)
+		get_tree().paused = true
 	
 	update_ui()
 	
@@ -136,4 +151,5 @@ func end_turn():
 			var room = Universe.get_random_room()
 			SFX.play_random("footstep_multi", 3)
 			Universe.room_num += 1
-			get_tree().change_scene_to(room)
+			Universe.player_hp = hp
+			SceneSwitcher.switch(room)

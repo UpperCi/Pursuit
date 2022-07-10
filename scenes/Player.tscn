@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/fonts/unscii.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui/loadout_frame.png" type="Texture" id=6]
 [ext_resource path="res://assets/ui/loadout_frame_active.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/mana_bar_empty.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/mana_bar_full.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -149,6 +151,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Mana" type="TextureProgress" parent="UI"]
+margin_left = 248.0
+margin_top = 89.0
+margin_right = 254.0
+margin_bottom = 109.0
+value = 50.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Weapon" type="TextureRect" parent="UI"]
 margin_left = 233.0
 margin_top = 64.0
@@ -200,6 +215,7 @@ __meta__ = {
 }
 
 [node name="FG" type="TextureRect" parent="UI/Spell"]
+visible = false
 margin_left = -4.0
 margin_top = -4.0
 margin_right = 18.0

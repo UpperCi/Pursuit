@@ -86,11 +86,9 @@ func set_hp(v):
 		Tween.EASE_OUT)
 		tween.start()
 		damage()
-		print("ouch!")
 	elif v > hp:
-		print("yay!")
+		pass
 	hp = v
-	print(hp)
 	
 	if hp <= 0:
 		die()

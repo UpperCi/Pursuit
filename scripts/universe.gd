@@ -11,6 +11,7 @@ var player_weapon: Node2D
 var player_spell: Node2D
 var past_types = [0]
 var room_num = 0
+var player_hp = 6
 
 func _ready():
 	player_weapon = player_weapon_start.instance()

@@ -19,7 +19,7 @@ shader_param/zoom = 0.975
 shader_param/scan_min = 0.3
 shader_param/scan_max = 0.8
 shader_param/rgb_min = 0.3
-shader_param/rgb_mult = 1.1
+shader_param/rgb_mult = 1.0
 shader_param/rgb_treshold = 0.2
 shader_param/backlight = 0.4
 shader_param/noise_mult = 0.05
@@ -41,6 +41,7 @@ layer = 10
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,6 +50,7 @@ __meta__ = {
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {

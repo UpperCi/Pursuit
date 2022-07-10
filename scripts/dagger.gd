@@ -5,5 +5,6 @@ func use(start_pos: Vector2, dir: Vector2):
 	var cell = world.get_cell(new_pos)
 	if cell.entity:
 		cell.entity.hp -= 1
+		VFX.create("Slash", start_pos, new_pos, world)
 		return true
 	return false

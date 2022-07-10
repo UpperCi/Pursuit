@@ -17,6 +17,7 @@ func take_turn():
 		if turn % 2 == 0:
 			if in_adjacent():
 				world.player.hp -= 1
+				VFX.create("Slash", map_pos, p_pos, world)
 				return true
 			var path = world.find_path(map_pos, player_last_pos)
 			var dir = map_pos - p_pos

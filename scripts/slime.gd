@@ -6,6 +6,10 @@ onready var anim = $AnimationPlayer
 func _ready():
 	anim.play("Idle")
 
+func die():
+	SFX.play_random("slime_dies", 4)
+	world.delete_entity(self)
+
 func take_turn():
 	var line_of_sight = world.line_of_sight(map_pos, p_pos)
 	update_aggro(line_of_sight)
@@ -20,8 +24,8 @@ func take_turn():
 			var path = world.find_path(map_pos, player_last_pos)
 			var path_player = world.find_path(map_pos, p_pos)
 			if len(path_player) <= 1:
-				print(path)
 				world.player.hp -= 1
+				VFX.create("Slime", map_pos, p_pos, world)
 				return true
 			var dir = map_pos - p_pos
 			flip_spr(dir.x, spr)

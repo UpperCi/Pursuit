@@ -1,6 +1,6 @@
 extends "res://scripts/spell.gd"
 
-func _ready():
+func start():
 	COOLDOWN = 4
 
 func use(start_pos: Vector2, dir: Vector2):
@@ -12,5 +12,6 @@ func use(start_pos: Vector2, dir: Vector2):
 		if cell.entity:
 			cell.entity.hp -= 1
 			SFX.play_random("spell_cast_fire", 6)
+			VFX.create("Fireball", start_pos, current_pos, world)
 			return true
 	return false

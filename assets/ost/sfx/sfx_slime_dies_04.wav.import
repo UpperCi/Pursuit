@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_slime_dies_04.wav-2651bd8765f320a4f38870d7c214e743.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_slime_dies_04.wav"
+dest_files=[ "res://.import/sfx_slime_dies_04.wav-2651bd8765f320a4f38870d7c214e743.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
