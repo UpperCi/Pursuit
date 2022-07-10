@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/voiceOver_god_12.ogg-851f762ca402bbd35a26dd2401ca584f.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/voices/voiceOver_god_12.ogg"
+dest_files=[ "res://.import/voiceOver_god_12.ogg-851f762ca402bbd35a26dd2401ca584f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

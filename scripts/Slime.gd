@@ -7,4 +7,3 @@ func _ready():
 	rotation = rot
 	position -= diff.normalized() * 2
 	anim.play("Play")
-

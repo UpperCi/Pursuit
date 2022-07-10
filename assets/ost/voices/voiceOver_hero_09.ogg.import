@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/voiceOver_hero_09.ogg-2761dd50b6717769ec43737101bbf43e.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/voices/voiceOver_hero_09.ogg"
+dest_files=[ "res://.import/voiceOver_hero_09.ogg-2761dd50b6717769ec43737101bbf43e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

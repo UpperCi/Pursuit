@@ -14,3 +14,6 @@ script = ExtResource( 1 )
 player_weapon_start = ExtResource( 4 )
 player_spell_start = ExtResource( 2 )
 rooms = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+bus = "Voice"

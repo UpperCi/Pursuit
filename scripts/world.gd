@@ -8,6 +8,7 @@ enum ROOM_TYPES {
 }
 
 export (ROOM_TYPES) var type
+export (bool) var talk = true
 
 const DIRS = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]
 
@@ -55,6 +56,9 @@ func get_cell(pos: Vector2):
 	}
 
 func _ready():
+	if talk:
+		Universe.talk()
+	
 	get_entities()
 	get_items()
 	
