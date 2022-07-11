@@ -1,6 +1,6 @@
 extends "res://scripts/item.gd"
 
-export (Array, String) var items = ["Dagger","Spear","Poison","Firebolt"]
+export (Array, String) var items = ["Spear","Poison","Firebolt","Bow","Hammer","Missile","Earthquake"]
 
 func open():
 	var item = items[randi() % len(items)]

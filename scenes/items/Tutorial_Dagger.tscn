@@ -16,6 +16,6 @@ script = SubResource( 1 )
 img = ExtResource( 2 )
 scene = "res://scenes/items/Tutorial_Dagger.tscn"
 item_name = "Sword"
-item_desc = "Melee Weapon
+item_desc = "Weapon - Melee
 Unsheate weapon with [E]
 Execute attack by moving"

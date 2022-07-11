@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/test.png" type="Texture" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/Statue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/calc_map_pos.gd" type="Script" id=5]
 [ext_resource path="res://scenes/enemies/Slime.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Exit.tscn" type="PackedScene" id=13]
@@ -41,8 +42,8 @@ __meta__ = {
 }
 
 [node name="Player" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 24, 120 )
-start_pos = Vector2( 1, 7 )
+position = Vector2( 72, 120 )
+start_pos = Vector2( 4, 7 )
 
 [node name="Slime" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 88, 56 )
@@ -56,12 +57,18 @@ pool = [ "Slime", "Bat" ]
 [node name="RandomEntity2" parent="Entities" instance=ExtResource( 19 )]
 position = Vector2( 152, 88 )
 start_pos = Vector2( 9, 5 )
-chance = 0.5
+chance = 0.0
 
 [node name="RandomEntity3" parent="Entities" instance=ExtResource( 19 )]
 position = Vector2( 56, 24 )
 start_pos = Vector2( 3, 1 )
 chance = 0.5
+
+[node name="Statue" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 24, 120 )
+start_pos = Vector2( 1, 7 )
+facing = 3
+min_room = 10
 
 [node name="Test" type="Sprite" parent="."]
 visible = false

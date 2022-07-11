@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Earthquake.gd" type="Script" id=1]
+[ext_resource path="res://assets/earthquake.png" type="Texture" id=2]
+
+[node name="Earthquake" type="Node2D"]
+script = ExtResource( 1 )
+img = ExtResource( 2 )
+scene = "res://scenes/items/Earthquake.tscn"
+item_name = "Earthquake"
+item_desc = "Spell - Radius 1
+Cooldown: 5 Turns
+Pushes enemies away"

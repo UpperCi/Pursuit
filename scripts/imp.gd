@@ -18,10 +18,11 @@ func take_turn():
 	if aggro:
 		if turn % 2 == 0:
 			for d in world.DIRS:
-				if (map_pos + d == p_pos or map_pos + d * 2 == p_pos):
-					world.player.hp -= 1
-					VFX.create("Fireball", map_pos, p_pos, world)
-					return true
+				if world.get_cell(map_pos + d).valid_move:
+					if (map_pos + d == p_pos or map_pos + d * 2 == p_pos):
+						world.player.hp -= 1
+						VFX.create("Fireball", map_pos, p_pos, world)
+						return true
 			
 			var path = world.find_path(map_pos, player_last_pos)
 			var dir = map_pos - p_pos

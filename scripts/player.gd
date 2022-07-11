@@ -88,6 +88,10 @@ func die():
 	Music.stop()
 	SceneSwitcher.switch(load("res://scenes/DeathMenu.tscn"))
 
+func update_item_ui():
+	ui.get_node("Weapon").texture = weapon.img
+	ui.get_node("Spell").texture = spell.img
+
 func update_items():
 	weapon.world = world
 	spell.world = world
@@ -95,8 +99,7 @@ func update_items():
 	spell.start()
 	weapon.player = self
 	spell.player = self
-	ui.get_node("Weapon").texture = weapon.img
-	ui.get_node("Spell").texture = spell.img
+	update_item_ui()
 
 func eval_action(dir: Vector2):
 	match(current_action):
@@ -107,7 +110,6 @@ func eval_action(dir: Vector2):
 		ACTIONS.ATTACK:
 			self.current_action = ACTIONS.MOVE
 			if weapon.use(map_pos, dir):
-				SFX.play_random("knife_hit", 4)
 				return true
 		ACTIONS.SPELL:
 			self.current_action = ACTIONS.MOVE

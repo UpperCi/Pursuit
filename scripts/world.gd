@@ -38,6 +38,7 @@ func get_cell(pos: Vector2):
 	var item = false
 	var tile = tilemap.get_cell(pos.x, pos.y)
 	var closed_exit = false
+	var exit = false
 	var chest = false
 	
 	for e in entities:
@@ -49,6 +50,7 @@ func get_cell(pos: Vector2):
 		if i.map_pos == pos:
 			item = i
 			if i.type == i.ITEM_TYPES.EXIT:
+				exit = true
 				closed_exit = not i.is_open
 			if i.type == i.ITEM_TYPES.CHEST:
 				chest = true
@@ -59,7 +61,7 @@ func get_cell(pos: Vector2):
 		"entity": entity,
 		"item": item,
 		"valid_move": (tile == -1 && not entity && not closed_exit),
-		"valid_path": (tile == -1 && not chest)
+		"valid_path": (tile == -1 && not chest && not closed_exit)
 	}
 
 func _ready():

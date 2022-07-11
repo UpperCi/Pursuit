@@ -41,6 +41,11 @@ start_pos = Vector2( 6, 6 )
 position = Vector2( 56, 72 )
 start_pos = Vector2( 3, 4 )
 
+[node name="RandomEntity3" parent="Entities" instance=ExtResource( 6 )]
+position = Vector2( 136, 40 )
+start_pos = Vector2( 8, 2 )
+chance = 0.0
+
 [node name="RandomEntity2" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 168, 88 )
 start_pos = Vector2( 10, 5 )

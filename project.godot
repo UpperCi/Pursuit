@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="MiniJam"
 run/main_scene="res://scenes/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/characters/bnuy.png"
 
 [autoload]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_spell_cast_missile_2_01.wav-7051a686f7690967e2507509515361bb.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_spell_cast_missile_2_01.wav"
+dest_files=[ "res://.import/sfx_spell_cast_missile_2_01.wav-7051a686f7690967e2507509515361bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

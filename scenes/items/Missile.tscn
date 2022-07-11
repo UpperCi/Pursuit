@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Missile.gd" type="Script" id=1]
+[ext_resource path="res://assets/missile.png" type="Texture" id=2]
+
+[node name="Missile" type="Node2D"]
+script = ExtResource( 1 )
+img = ExtResource( 2 )
+scene = "res://scenes/items/Missile.tscn"
+item_name = "Missile"
+item_desc = "Spell - Radius 4
+Cooldown: 7 Turns
+Homes in on nearest enemy"

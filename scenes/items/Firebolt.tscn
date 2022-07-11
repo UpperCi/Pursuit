@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 img = ExtResource( 2 )
 scene = "res://scenes/items/Firebolt.tscn"
 item_name = "Firebolt"
-item_desc = "Range 3 Spell
+item_desc = "Spell - Range 3
 Cooldown: 3 Turns"

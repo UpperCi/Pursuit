@@ -6,14 +6,19 @@ enum DIRS {
 
 export var offset = 0
 export (DIRS) var facing
+export var min_room = 0
 
 onready var spr = $Sprite
 onready var dir = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT][facing]
 
 func _ready():
+	fire_res = true
+	if Universe.room_num < min_room:
+		world.connect("ready", self, "die")
 	hp = 20
 	max_hp = 20
 	flip_spr(-dir.x, spr)
+
 
 func die():
 	world.delete_entity(self)

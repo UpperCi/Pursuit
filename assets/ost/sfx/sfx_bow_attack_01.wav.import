@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_bow_attack_01.wav-6065dda75f7ca5a0cc3c57d3e7aabd8f.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_bow_attack_01.wav"
+dest_files=[ "res://.import/sfx_bow_attack_01.wav-6065dda75f7ca5a0cc3c57d3e7aabd8f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

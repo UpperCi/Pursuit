@@ -24,9 +24,6 @@ onready var bus = AudioServer.get_bus_index("Voice")
 func _ready():
 	player_weapon = nothing
 	player_spell = nothing
-	
-	player_weapon = load("res://scenes/items/Dagger.tscn")
-	player_spell = load("res://scenes/items/Firebolt.tscn")
 
 func talk():
 	if len(played_voices) >= total_voices:
@@ -58,8 +55,9 @@ func get_random_room():
 		var room_scene = "res://scenes/rooms/tutorial_" + \
 		str(tutorial_level + 1) + ".tscn"
 		tutorial_level += 1
+		room_num -= 1
 		return load(room_scene)
-	
+	tutorial_level = 4
 	var room_scene = rooms[randi() % len(rooms)]
 	var room = room_scene.instance()
 	var rerolls = REROLLS

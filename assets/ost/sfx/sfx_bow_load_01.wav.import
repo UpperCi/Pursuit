@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_bow_load_01.wav-457f702f9e0eff23b4511a438199fc63.sample"
+
+[deps]
+
+source_file="res://assets/ost/sfx/sfx_bow_load_01.wav"
+dest_files=[ "res://.import/sfx_bow_load_01.wav-457f702f9e0eff23b4511a438199fc63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

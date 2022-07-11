@@ -11,7 +11,7 @@ func _ready():
 	world.connect("ready", self, "gen")
 
 func gen():
-	if randf() < chance:
+	if randf() - Universe.room_num / 10 < chance:
 		var enemy = pool[randi() % len(pool)]
 		var enemy_scene = "res://scenes/enemies/" + enemy + ".tscn"
 		var enemy_node = load(enemy_scene).instance()
