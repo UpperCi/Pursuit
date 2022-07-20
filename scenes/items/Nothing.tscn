@@ -4,7 +4,7 @@
 script/source = "extends \"res://scripts/spell.gd\"
 
 func start():
-	COOLDOWN = 100000
+	COOLDOWN = 10000
 	cool_left = COOLDOWN
 
 func use(a, b):

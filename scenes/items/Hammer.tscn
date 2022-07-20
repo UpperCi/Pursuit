@@ -9,4 +9,4 @@ img = ExtResource( 2 )
 scene = "res://scenes/items/Hammer.tscn"
 item_name = "Hammer"
 item_desc = "Weapon - Melee
-Pushes enemies back upon impact."
+Pushes enemy 2 tiles away"

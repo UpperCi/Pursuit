@@ -52,7 +52,7 @@ text = "Start"
 margin_top = 24.0
 margin_bottom = 44.0
 script = ExtResource( 3 )
-path = "res://scenes/Settings.tscn"
+path = "res://scenes/Settings_Menu.tscn"
 
 [node name="MenuButton3" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 48.0

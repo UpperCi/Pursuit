@@ -106,6 +106,8 @@ void fragment() {
 	COLOR.rgb = tex;
 	if (do_subpixel)
 		COLOR.rgb *= rgb_mod(uv);
+	else:
+		COLOR.rgb *= vec3(1.0 + backlight);
 	if (do_scanline && !rotate_pixels)
 		COLOR.rgb *= vec3(scanline(get_pix_y(uv.y)));
 	else if (do_scanline)

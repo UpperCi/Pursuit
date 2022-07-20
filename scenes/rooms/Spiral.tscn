@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/calc_map_pos.gd" type="Script" id=1]
+[ext_resource path="res://scripts/world.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/DungeonTiles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemies/Statue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Exit.tscn" type="PackedScene" id=13]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Items" type="Node2D" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Exit" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 8, 8 )
+start_pos = Vector2( 0, 0 )
+
+[node name="Entities" type="Node2D" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 56, 72 )
+start_pos = Vector2( 3, 4 )
+
+[node name="Statue" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 136, 56 )
+start_pos = Vector2( 8, 3 )
+
+[node name="Statue4" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 168, 72 )
+start_pos = Vector2( 10, 4 )
+facing = 3
+
+[node name="Statue5" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 168, 88 )
+start_pos = Vector2( 10, 5 )
+offset = 1
+facing = 3
+
+[node name="Statue6" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 168, 104 )
+start_pos = Vector2( 10, 6 )
+offset = 2
+facing = 3
+
+[node name="Statue7" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 152, 104 )
+start_pos = Vector2( 9, 6 )
+facing = 1
+
+[node name="Statue8" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 136, 104 )
+start_pos = Vector2( 8, 6 )
+offset = 1
+facing = 1
+
+[node name="Statue9" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 120, 104 )
+start_pos = Vector2( 7, 6 )
+offset = 2
+facing = 1
+
+[node name="Statue10" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 120, 88 )
+start_pos = Vector2( 7, 5 )
+facing = 2
+
+[node name="Statue11" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 120, 72 )
+start_pos = Vector2( 7, 4 )
+offset = 1
+facing = 2
+
+[node name="Statue12" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 120, 56 )
+start_pos = Vector2( 7, 3 )
+offset = 2
+facing = 2
+
+[node name="Statue2" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 152, 56 )
+start_pos = Vector2( 9, 3 )
+offset = 1
+
+[node name="Statue3" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 168, 56 )
+start_pos = Vector2( 10, 3 )
+offset = 2
+
+[node name="Tiles" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( -1, 0, 8, -65536, 0, 10, -65535, 0, 10, -65534, 0, 10, -65533, 0, 10, -65532, 0, 10, -65531, 0, 10, -65530, 0, 10, -65529, 0, 10, -65528, 0, 10, -65527, 0, 10, -65526, 0, 10, -65525, 0, 10, -65524, 0, 10, -65523, 0, 10, -65522, 0, 10, -65521, 0, 10, -65520, 0, 11, 65535, 0, 65544, 0, 0, 131081, 1, 0, 131081, 2, 0, 131081, 3, 0, 131081, 4, 0, 131081, 5, 0, 131081, 6, 0, 131081, 7, 0, 131081, 8, 0, 131081, 9, 0, 131081, 10, 0, 131081, 11, 0, 131081, 12, 0, 131081, 13, 0, 131081, 14, 0, 131081, 15, 0, 131081, 16, 0, 131083, 131071, 0, 65544, 65536, 0, 131081, 65537, 0, 131081, 65538, 0, 131078, 65539, 0, 12, 65540, 0, 196617, 65541, 0, 196617, 65542, 0, 12, 65543, 0, 12, 65544, 0, 12, 65545, 0, 12, 65546, 0, 12, 65547, 0, 196617, 65548, 0, 131077, 65549, 0, 131081, 65550, 0, 131081, 65551, 0, 131081, 65552, 0, 131083, 196607, 0, 65544, 131072, 0, 131081, 131073, 0, 131081, 131074, 0, 131083, 131084, 0, 65544, 131085, 0, 131081, 131086, 0, 131081, 131087, 0, 131081, 131088, 0, 131083, 262143, 0, 65544, 196608, 0, 131081, 196609, 0, 131081, 196610, 0, 131083, 196620, 0, 65544, 196621, 0, 131081, 196622, 0, 131081, 196623, 0, 131081, 196624, 0, 131083, 327679, 0, 65544, 262144, 0, 131081, 262145, 0, 131081, 262146, 0, 131083, 262148, 0, 8, 262149, 0, 11, 262152, 0, 8, 262153, 0, 11, 262156, 0, 65544, 262157, 0, 131081, 262158, 0, 131081, 262159, 0, 131081, 262160, 0, 131083, 393215, 0, 65544, 327680, 0, 131081, 327681, 0, 131081, 327682, 0, 131083, 327684, 0, 65544, 327685, 0, 131083, 327688, 0, 196616, 327689, 0, 196619, 327692, 0, 65544, 327693, 0, 131081, 327694, 0, 131081, 327695, 0, 131081, 327696, 0, 131083, 458751, 0, 65544, 393216, 0, 131081, 393217, 0, 131081, 393218, 0, 65542, 393219, 0, 10, 393220, 0, 65541, 393221, 0, 131083, 393228, 0, 65544, 393229, 0, 131081, 393230, 0, 131081, 393231, 0, 131081, 393232, 0, 131083, 524287, 0, 65544, 458752, 0, 131081, 458753, 0, 131081, 458754, 0, 131081, 458755, 0, 131081, 458756, 0, 131081, 458757, 0, 131083, 458764, 0, 65544, 458765, 0, 131081, 458766, 0, 131081, 458767, 0, 131081, 458768, 0, 131083, 589823, 0, 65544, 524288, 0, 131081, 524289, 0, 131081, 524290, 0, 131081, 524291, 0, 131081, 524292, 0, 131081, 524293, 0, 65542, 524294, 0, 10, 524295, 0, 10, 524296, 0, 10, 524297, 0, 10, 524298, 0, 10, 524299, 0, 10, 524300, 0, 65541, 524301, 0, 131081, 524302, 0, 131081, 524303, 0, 131081, 524304, 0, 131083, 655359, 0, 196616, 589824, 0, 196617, 589825, 0, 196617, 589826, 0, 196617, 589827, 0, 196617, 589828, 0, 196617, 589829, 0, 196617, 589830, 0, 196617, 589831, 0, 196617, 589832, 0, 196617, 589833, 0, 196617, 589834, 0, 196617, 589835, 0, 196617, 589836, 0, 196617, 589837, 0, 196617, 589838, 0, 196617, 589839, 0, 196617, 589840, 0, 196619 )

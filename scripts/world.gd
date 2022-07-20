@@ -66,6 +66,7 @@ func get_cell(pos: Vector2):
 
 func _ready():
 	randomize()
+	Gfx.update_tiles()
 	if talk:
 		Universe.talk()
 	elif spit != "":
@@ -116,6 +117,12 @@ func line(start: Vector2, end: Vector2):
 			iy += 1
 		points.append(p)
 	return points
+
+func valid_spaces(spaces = []):
+	for s in spaces:
+		if not get_cell(s).valid_move:
+			return false
+	return true
 
 func update_turn():
 	var current_entity = entities[turn_index]

@@ -18,12 +18,18 @@ func _ready():
 	hp = 20
 	max_hp = 20
 	flip_spr(-dir.x, spr)
+	if turn % 3 == (offset - 1) % 3 or (turn % 3 == 2 and offset == 0):
+		spr.frame = 1
 
 
 func die():
 	world.delete_entity(self)
 
 func take_turn():
+	if turn % 3 == (offset - 1) % 3 or (turn % 3 == 2 and offset == 0):
+		spr.frame = 1
+	else:
+		spr.frame = 0
 	if turn % 3 == offset:
 		var end = map_pos
 		for i in range(14):

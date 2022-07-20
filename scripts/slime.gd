@@ -12,10 +12,15 @@ func die():
 
 func take_turn():
 	var line_of_sight = world.line_of_sight(map_pos, p_pos)
-	update_aggro(line_of_sight)
+	var near = (p_pos - map_pos).length() < 2
+	update_aggro(line_of_sight or near)
 	if line_of_sight:
 		aggro = true
 		player_last_pos = p_pos
+	if turn % 3 == 2:
+		anim.play("Attack")
+	else:
+		anim.play("Idle")
 	if aggro:
 		if turn % 3 != 0:
 			return true

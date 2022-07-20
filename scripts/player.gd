@@ -40,6 +40,8 @@ func _ready():
 	anim.play("Move")
 	world.player = self
 	update_items()
+	weapon.start_room()
+	spell.start_room()
 
 func grab_item(pos: Vector2):
 	var cell = world.get_cell(pos)
@@ -49,14 +51,16 @@ func grab_item(pos: Vector2):
 		world.delete_item(cell.item)
 		var weapon_node = cell.item.target_weapon.instance()
 		if 'is_spell' in weapon_node:
-			drop_item(map_pos, load(spell.scene), spell.img)
+			if spell.name != "Nothing":
+				drop_item(map_pos, load(spell.scene), spell.img)
 			spell = weapon_node
 			SFX.play_random("pickUp_spell", 4)
 			Universe.player_spell = cell.item.target_weapon
 			if not spell.item_name in Universe.seen_items:
 				init_desc(spell)
 		else:
-			drop_item(map_pos, load(weapon.scene), weapon.img)
+			if weapon.name != "Nothing":
+				drop_item(map_pos, load(weapon.scene), weapon.img)
 			weapon = weapon_node
 			SFX.play_random("pickUp_weapon", 4)
 			Universe.player_weapon = cell.item.target_weapon
@@ -86,6 +90,9 @@ func damage():
 func die():
 	SFX.play("player_dies_1")
 	Music.stop()
+	Universe.player_hp = 6
+	Universe.player_weapon = load("res://scenes/items/Dagger.tscn")
+	Universe.player_spell = load("res://scenes/items/Firebolt.tscn")
 	SceneSwitcher.switch(load("res://scenes/DeathMenu.tscn"))
 
 func update_item_ui():
@@ -137,7 +144,7 @@ func update_ui():
 		ui.get_node("Spell").self_modulate = Color(1,1,1,1)
 
 func start_turn():
-	pass
+	shielded = false
 
 func take_turn():
 	if current_action == ACTIONS.CONFIRM_ITEM:

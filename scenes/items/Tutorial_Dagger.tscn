@@ -6,7 +6,6 @@
 script/source = "extends \"res://scripts/dagger.gd\"
 
 func start():
-	print(Universe.tutorial_level)
 	if Universe.tutorial_level <= 2:
 		Universe.spit(\"res://assets/ost/voices/sfx_voiceOver_Tutorial Unsheathe & Attack.ogg\")
 "

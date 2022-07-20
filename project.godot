@@ -32,6 +32,7 @@ SceneSwitcher="*res://scenes/SceneSwitcher.tscn"
 Gfx="*res://scenes/GFX.tscn"
 SFX="*res://scenes/SFX.tscn"
 VFX="*res://scenes/VFX.tscn"
+Settings="*res://scenes/Settings.tscn"
 
 [display]
 

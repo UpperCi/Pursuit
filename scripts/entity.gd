@@ -12,6 +12,7 @@ var aggro = false
 var p_pos = Vector2.ZERO
 var player_last_pos = Vector2.ZERO
 var fire_res = false
+var shielded = false
 
 onready var world = get_parent().get_parent()
 onready var map_item_scene = preload("res://scenes/Item.tscn")
@@ -56,6 +57,7 @@ func drop_item(pos: Vector2, scene: PackedScene, img: Texture):
 	world.create_item(map_item_node)
 	
 func start_turn():
+	shielded = false
 	p_pos = world.player.map_pos
 
 func end_turn():
@@ -63,16 +65,17 @@ func end_turn():
 
 func set_map_pos(v):
 	map_pos = v
-	#position = map_pos * 16 + Vector2(8, 8)
+	var target = map_pos * 16 + Vector2(8, 8)
 	if tween:
-		var target = map_pos * 16 + Vector2(8, 8)
+		target = map_pos * 16 + Vector2(8, 8)
 		var diff = position - target
+		tween.remove(self, "position")
 		tween.interpolate_property(self, "position", position, target, \
 		0.15 * diff.length() / 16, Tween.TRANS_QUAD,
 		Tween.EASE_OUT)
 		tween.start()
 	else:
-		position = map_pos * 16 + Vector2(8, 8)
+		position = target
 
 func die():
 	world.delete_entity(self)
@@ -82,13 +85,17 @@ func damage():
 
 func set_hp(v):
 	if v < hp:
+		if shielded:
+			shielded = false
+			# shield fx
+			return
 		tween.interpolate_property(self, "modulate", Color(10, 10, 10),
 		Color(1, 1, 1), 0.25, Tween.TRANS_QUAD,
 		Tween.EASE_OUT)
 		tween.start()
 		damage()
-	elif v > hp:
-		pass
+	elif hp >= max_hp:
+		return
 	hp = v
 	
 	if hp <= 0:

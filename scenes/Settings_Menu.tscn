@@ -1,0 +1,348 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/base.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/settings.gd" type="Script" id=2]
+[ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Settings_Menu.gd" type="Script" id=4]
+[ext_resource path="res://scripts/SceneButton.gd" type="Script" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+margin_left = 88.0
+margin_top = 32.0
+margin_right = 168.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="Main/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 8.0
+text = "Settings"
+align = 1
+
+[node name="Audio" parent="Main/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 12.0
+margin_bottom = 32.0
+text = "Audio"
+
+[node name="Filter" parent="Main/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 36.0
+margin_bottom = 56.0
+text = "Filter"
+
+[node name="MenuButton3" parent="Main/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 60.0
+margin_bottom = 80.0
+script = ExtResource( 5 )
+text = "Back"
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Audio" type="CenterContainer" parent="."]
+visible = false
+margin_right = 256.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio"]
+margin_left = 62.0
+margin_top = 20.0
+margin_right = 194.0
+margin_bottom = 124.0
+
+[node name="Label" type="Label" parent="Audio/VBoxContainer"]
+margin_right = 132.0
+margin_bottom = 8.0
+text = "Volume Settings"
+align = 1
+
+[node name="Master" type="HBoxContainer" parent="Audio/VBoxContainer"]
+margin_top = 12.0
+margin_right = 132.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="Audio/VBoxContainer/Master"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="Audio/VBoxContainer/Master"]
+margin_left = 52.0
+margin_right = 132.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 2 )
+setting = "master_volume"
+
+[node name="Music" type="HBoxContainer" parent="Audio/VBoxContainer"]
+margin_top = 30.0
+margin_right = 132.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Audio/VBoxContainer/Music"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Audio/VBoxContainer/Music"]
+margin_left = 52.0
+margin_right = 132.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 2 )
+setting = "music_volume"
+
+[node name="SFX" type="HBoxContainer" parent="Audio/VBoxContainer"]
+margin_top = 48.0
+margin_right = 132.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="Audio/VBoxContainer/SFX"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="Audio/VBoxContainer/SFX"]
+margin_left = 52.0
+margin_right = 132.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 2 )
+setting = "sfx_volume"
+
+[node name="Voice" type="HBoxContainer" parent="Audio/VBoxContainer"]
+margin_top = 66.0
+margin_right = 132.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="Audio/VBoxContainer/Voice"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Voice"
+
+[node name="HSlider" type="HSlider" parent="Audio/VBoxContainer/Voice"]
+margin_left = 52.0
+margin_right = 132.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource( 2 )
+setting = "voice_volume"
+
+[node name="Back" parent="Audio/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 26.0
+margin_top = 84.0
+margin_right = 106.0
+margin_bottom = 104.0
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="Filter" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Filter"]
+margin_left = 42.0
+margin_top = 2.0
+margin_right = 214.0
+margin_bottom = 142.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_right = 172.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/HBoxContainer"]
+margin_top = 9.0
+margin_right = 56.0
+margin_bottom = 17.0
+text = "Enabled"
+
+[node name="CheckBox" type="CheckBox" parent="Filter/VBoxContainer/HBoxContainer"]
+margin_left = 60.0
+margin_right = 84.0
+margin_bottom = 26.0
+script = ExtResource( 2 )
+change_signal = "pressed"
+setting = "filter_enabled"
+attr = "pressed"
+
+[node name="Label2" type="Label" parent="Filter/VBoxContainer/HBoxContainer"]
+margin_left = 88.0
+margin_top = 9.0
+margin_right = 144.0
+margin_bottom = 17.0
+text = "Slotted"
+
+[node name="CheckBox2" type="CheckBox" parent="Filter/VBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 172.0
+margin_bottom = 26.0
+pressed = true
+script = ExtResource( 2 )
+change_signal = "pressed"
+setting = "filter_slotted"
+attr = "pressed"
+
+[node name="Stretch" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_top = 30.0
+margin_right = 172.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/Stretch"]
+margin_top = 3.0
+margin_right = 88.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Stretch"
+
+[node name="HSlider" type="HSlider" parent="Filter/VBoxContainer/Stretch"]
+margin_left = 92.0
+margin_right = 172.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource( 2 )
+setting = "filter_stretch"
+
+[node name="Scanline" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_top = 48.0
+margin_right = 172.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/Scanline"]
+margin_top = 3.0
+margin_right = 88.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Scanline"
+
+[node name="HSlider" type="HSlider" parent="Filter/VBoxContainer/Scanline"]
+margin_left = 92.0
+margin_right = 172.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource( 2 )
+setting = "filter_scanline"
+
+[node name="Subpix" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_top = 66.0
+margin_right = 172.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/Subpix"]
+margin_top = 3.0
+margin_right = 88.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Subpixels"
+
+[node name="HSlider" type="HSlider" parent="Filter/VBoxContainer/Subpix"]
+margin_left = 92.0
+margin_right = 172.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.4
+script = ExtResource( 2 )
+setting = "filter_subpixel"
+
+[node name="Noise" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_top = 84.0
+margin_right = 172.0
+margin_bottom = 98.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/Noise"]
+margin_top = 3.0
+margin_right = 88.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Noise"
+
+[node name="HSlider" type="HSlider" parent="Filter/VBoxContainer/Noise"]
+margin_left = 92.0
+margin_right = 172.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource( 2 )
+setting = "filter_noise"
+
+[node name="Backlight" type="HBoxContainer" parent="Filter/VBoxContainer"]
+margin_top = 102.0
+margin_right = 172.0
+margin_bottom = 116.0
+
+[node name="Label" type="Label" parent="Filter/VBoxContainer/Backlight"]
+margin_top = 3.0
+margin_right = 88.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+text = "Backlight"
+
+[node name="HSlider" type="HSlider" parent="Filter/VBoxContainer/Backlight"]
+margin_left = 92.0
+margin_right = 172.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.4
+script = ExtResource( 2 )
+setting = "filter_backlight"
+
+[node name="Back" parent="Filter/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 46.0
+margin_top = 120.0
+margin_right = 126.0
+margin_bottom = 140.0
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="Main/VBoxContainer/Audio" to="." method="_on_Audio_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Filter" to="." method="_on_Filter_pressed"]

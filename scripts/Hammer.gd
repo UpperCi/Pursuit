@@ -5,7 +5,8 @@ func use(start_pos: Vector2, dir: Vector2):
 	var cell = world.get_cell(new_pos)
 	if cell.entity:
 		cell.entity.hp -= 1
-		cell.entity.move_self(new_pos + dir)
+		if cell.entity.move_self(new_pos + dir):
+			cell.entity.move_self(new_pos + dir * 2)
 		VFX.create("Slash", start_pos, new_pos, world)
 		SFX.play_random("knife_hit", 4)
 		return true

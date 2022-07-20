@@ -1,9 +1,10 @@
 extends "res://scripts/entity.gd"
 
 onready var spr = $Sprite
+onready var anim = $AnimationPlayer
 
 func _ready():
-	$AnimationPlayer.play("Idle")
+	anim.play("Idle")
 	hp = 2
 	max_hp = 2
 
@@ -17,6 +18,10 @@ func take_turn():
 	if line_of_sight:
 		aggro = true
 		player_last_pos = p_pos
+	if turn % 2 == 1:
+		anim.play("Attack")
+	else:
+		anim.play("Idle")
 	if aggro:
 		if turn % 2 == 0:
 			if in_adjacent():
@@ -31,7 +36,7 @@ func take_turn():
 			line_of_sight = line_of_sight or world.line_of_sight(map_pos, p_pos)
 			aggro = line_of_sight or map_pos != player_last_pos
 	else:
-		if turn % 3 == 0:
+		if turn % 2 == 0:
 			var valid_dirs = []
 			for d in world.DIRS:
 				var cell = world.get_cell(map_pos + d)

@@ -14,7 +14,9 @@ var room_num = 0
 var player_hp = 6
 var played_voices = []
 var seen_items = []
-var tutorial_level = 0
+var tutorial_level = -1
+var last_item = -1
+var banned_item = -1
 
 onready var total_voices = GOD_VOICES + HERO_VOICES
 onready var talker = $Voice
@@ -24,6 +26,9 @@ onready var bus = AudioServer.get_bus_index("Voice")
 func _ready():
 	player_weapon = nothing
 	player_spell = nothing
+	return
+	player_weapon = load("res://scenes/items/Dagger.tscn")
+	player_spell = load("res://scenes/items/Firebolt.tscn")
 
 func talk():
 	if len(played_voices) >= total_voices:
@@ -51,13 +56,20 @@ func spit(line, vol = -7):
 	talker.play()
 
 func get_random_room():
+	if tutorial_level < 0:
+		tutorial_level = Settings.get_or("tutorial_level", 0)
 	if tutorial_level < 3:
 		var room_scene = "res://scenes/rooms/tutorial_" + \
 		str(tutorial_level + 1) + ".tscn"
 		tutorial_level += 1
+		Settings.set_thing("tutorial_level", tutorial_level)
 		room_num -= 1
 		return load(room_scene)
+	elif room_num <= 0:
+		player_weapon = load("res://scenes/items/Dagger.tscn")
+		player_spell = load("res://scenes/items/Firebolt.tscn")
 	tutorial_level = 4
+	Settings.set_thing("tutorial_level", tutorial_level)
 	var room_scene = rooms[randi() % len(rooms)]
 	var room = room_scene.instance()
 	var rerolls = REROLLS
@@ -75,5 +87,4 @@ func get_random_room():
 	past_types.push_back(room.type)
 	if len(past_types) > MAX_PAST_TYPES:
 		past_types.pop_front()
-	print(past_types)
 	return room_scene

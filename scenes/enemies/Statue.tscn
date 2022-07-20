@@ -12,3 +12,4 @@ is_player = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+hframes = 2

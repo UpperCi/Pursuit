@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/death_text.gd" type="Script" id=2]
 [ext_resource path="res://scripts/SceneButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/unscii.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scripts/pausecontainer.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://scripts/menubutton.gd\"
+
+func _pressed():
+	SceneSwitcher.switch(Universe.get_random_room())
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+func _ready():
+	var score = Universe.room_num
+	var highscore = max(Settings.get_or(\"highscore\", 0), score)
+	self.text = \"Your high-score is %s\" % highscore
+	Settings.set_thing(\"high-score\", highscore)
+	Universe.room_num = 0
+"
 
 [node name="DeathMenu" type="Control"]
 pause_mode = 2
@@ -25,7 +43,7 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_top = 40.0
+margin_top = 64.0
 margin_right = 256.0
 margin_bottom = 144.0
 __meta__ = {
@@ -34,15 +52,14 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 88.0
-margin_top = 30.0
+margin_top = 18.0
 margin_right = 168.0
-margin_bottom = 74.0
+margin_bottom = 62.0
 script = ExtResource( 5 )
 
 [node name="MenuButton3" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-script = ExtResource( 3 )
+script = SubResource( 1 )
 text = "Retry"
-path = "res://main.tscn"
 
 [node name="MenuButton4" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 24.0
@@ -57,7 +74,7 @@ margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "You Died!"
 align = 1
-valign = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,6 +88,19 @@ text = "You conquered 5 levels."
 align = 1
 valign = 1
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 4 )
+text = "Your highscore is 10"
+align = 1
+valign = 1
+script = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
